@@ -18,10 +18,7 @@
       fsType = "ext4";
     };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.luks.devices."luks-fb629e77-82a7-41a9-8051-2e8ee85f0441".device = "/dev/disk/by-uuid/fb629e77-82a7-41a9-8051-2e8ee85f0441";
-#  boot.initrd.luks.devices."luks-74d610d2-145e-433d-9f1d-693795e55b66".device = "/dev/disk/by-uuid/74d610d2-145e-433d-9f1d-693795e55b66";
+  boot.initrd.luks.devices."luks-74d610d2-145e-433d-9f1d-693795e55b66".device = "/dev/disk/by-uuid/74d610d2-145e-433d-9f1d-693795e55b66";
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/E6C9-BCA6";
