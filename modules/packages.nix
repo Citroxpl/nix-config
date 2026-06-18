@@ -13,12 +13,8 @@
     pamixer
     pavucontrol
     pulseaudio
-    tauon
 
     # Browsers / internet
-    chromium
-    librewolf
-
     # Dev
     kitty
     ccache
@@ -65,7 +61,6 @@
     # Media
     ffmpeg
     freecad
-    lmms
     mpv
     nomacs
     #prusa-slicer
