@@ -9,7 +9,7 @@ in
     ../../modules/packages.nix
     ../../modules/hyprland.nix
     ../../modules/hyprlock.nix
-    ../../modules/greetd.nix
+    #../../modules/greetd.nix
     ../../modules/bash.nix
     ../../modules/flameshot.nix
     ../../modules/defaults.nix
