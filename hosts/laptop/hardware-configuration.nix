@@ -4,54 +4,64 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "thunderbolt"
-    "nvme"
-    "usb_storage"
-    "sd_mod"
-    "sdhci_pci"
-  ];
-
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  # Bootloader
+
+  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Root LUKS
-  boot.initrd.luks.devices."luks-74d610d2-145e-433d-9f1d-693795e55b66".device =
-    "/dev/disk/by-uuid/74d610d2-145e-433d-9f1d-693795e55b66";
+  networking.hostName = "nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Swap LUKS
-  boot.initrd.luks.devices."luks-fb629e77-82a7-41a9-8051-2e8ee85f0441".device =
-    "/dev/disk/by-uuid/fb629e77-82a7-41a9-8051-2e8ee85f0441";
 
-  fileSystems."/" = {
-    device = "/dev/mapper/luks-74d610d2-145e-433d-9f1d-693795e55b66";
-    fsType = "ext4";
-  };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/E6C9-BCA6";
-    fsType = "vfat";
-    options = [ "fmask=0077" "dmask=0077" ];
-  };
 
-  swapDevices = [
+
+  fileSystems."/" =
+    { device = "/dev/mapper/luks-ac56949b-2c01-4f93-9432-4893af4cd592";
+      fsType = "ext4";
+    };
+
+  boot.initrd.luks.devices."luks-ac56949b-2c01-4f93-9432-4893af4cd592".device = "/dev/disk/by-uuid/ac56949b-2c01-4f93-9432-4893af4cd592";
+  boot.initrd.luks.devices."luks-c81d5425-4469-4464-8277-5752e419d127".device = "/dev/disk/by-uuid/c81d5425-4469-4464-8277-5752e419d127";
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/77C5-A357";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  swapDevices =
+    [ { device = "/dev/mapper/luks-c81d5425-4469-4464-8277-5752e419d127"; }
+    ];
+
+#windows partition
+
+  fileSystems."/win" = 
+    { 
+    device = "/dev/nvme1n1p3";
+    fsType = "ntfs";
+    };
+
+#data partition
+
+  fileSystems."/data" = 
     {
-      device = "/dev/mapper/luks-fb629e77-82a7-41a9-8051-2e8ee85f0441";
-    }
-  ];
+    device = "/dev/nvme1n1p5";
+    fsType = "ntfs";
+    };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-
-  hardware.cpu.intel.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  
+  hardware.bluetooth.enable = true;
 }
+

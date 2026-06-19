@@ -1,4 +1,4 @@
-{ pkgs, ...};
+{ pkgs, ...}:
 
 
 {
@@ -9,7 +9,7 @@
     enableCompletion = true;
     autosuggestions.enable = true;
     ohMyZsh = {
-      theme = ""
-    }
-  }
+      theme = "";
+    };
+  };
 }

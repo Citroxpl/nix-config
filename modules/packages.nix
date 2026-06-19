@@ -2,12 +2,19 @@
 
 {
   environment.systemPackages = with pkgs; [
+    # apps
+    xfce4-whiskermenu-plugin
+    lxqt.qterminal    
+    blueman
+    zsh
+    
     # Archives
     _7zz
     unrar
     unzip
     zip
     file
+    xarchiver
 
     # Audio
     pamixer
@@ -15,6 +22,8 @@
     pulseaudio
 
     # Browsers / internet
+    google-chrome
+    netflix
     # Dev
     kitty
     ccache
@@ -42,6 +51,8 @@
     gcc
     zlib
     vbindiff
+    vscode
+    github-desktop    
 
     # Hardware / diagnostics
     acpi
@@ -77,10 +88,5 @@
     # Com
     thunderbird
     keepassxc
-
-    # Wayland utilities
-    wl-clipboard
-    wl-gammarelay-rs
-    brightnessctl
   ];
 }

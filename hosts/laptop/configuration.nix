@@ -7,13 +7,51 @@ in
   imports = [
     ./hardware-configuration.nix
     ../../modules/packages.nix
-    ../../modules/hyprland.nix
-    ../../modules/hyprlock.nix
-    #../../modules/greetd.nix
-    ../../modules/bash.nix
     ../../modules/flameshot.nix
+    ../../modules/zsh.nix
     ../../modules/defaults.nix
   ];
+
+  services.blueman.enable = true;
+
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # Enable the XFCE Desktop Environment.
+  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    variant = "";
+  };
+
+  # Configure console keymap
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Enable sound with pipewire.
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is en>
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
+
+
+
+
+
+
 
   networking.networkmanager.enable = true;
 
@@ -34,7 +72,7 @@ in
   services.xserver.xkb.layout = "pl";
   console.keyMap = "pl2";
 
-  users.users.sato = {
+  users.users.kuba = {
     isNormalUser = true;
     extraGroups = [
       "networkmanager"

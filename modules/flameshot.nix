@@ -15,7 +15,7 @@
     drawColor=#ffffff
     drawThickness=2
     saveAsFileExtension=png
-    savePath=/home/alikornsause/Pictures/Screenshots
+    savePath=/home/kuba/Pictures/Screenshots
     savePathFixed=true
     showAbortNotification=false
     showDesktopNotification=false
