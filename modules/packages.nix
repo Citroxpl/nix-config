@@ -77,6 +77,7 @@
     #prusa-slicer
     vlc
     libreoffice
+    zed-editor
 
     # Networking / wireless
     wirelesstools
