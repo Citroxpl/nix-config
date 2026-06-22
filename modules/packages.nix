@@ -25,6 +25,7 @@
     google-chrome
     netflix
     discord
+
     # Dev
     kitty
     ccache
