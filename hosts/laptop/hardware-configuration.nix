@@ -43,13 +43,7 @@
     [ { device = "/dev/mapper/luks-c81d5425-4469-4464-8277-5752e419d127"; }
     ];
 
-#windows partition
-
-  fileSystems."/win" = 
-    { 
-    device = "/dev/nvme1n1p3";
-    fsType = "ntfs";
-    };
+#windows partition is not mounting
 
 #data partition
 
