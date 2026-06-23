@@ -47,12 +47,6 @@ in
     #media-session.enable = true;
   };
 
-
-
-
-
-
-
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Warsaw";
@@ -81,6 +75,7 @@ in
       "input"
       "storage"
     ];
+    shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
