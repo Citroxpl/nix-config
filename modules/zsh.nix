@@ -9,7 +9,7 @@
     enableCompletion = true;
     autosuggestions.enable = true;
     ohMyZsh = {
-      theme = "";
+      theme = "../package-files/kali-like.zsh-theme";
     };
   };
 }
