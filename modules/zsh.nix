@@ -9,7 +9,11 @@
     enableCompletion = true;
     autosuggestions.enable = true;
     ohMyZsh = {
-      theme = "../package-files/kali-like.zsh-theme";
+      enable = true;
     };
+
+    interactiveShellInit = ''
+      source ${../package-files/kali-like.zsh-theme}
+    '';
   };
 }

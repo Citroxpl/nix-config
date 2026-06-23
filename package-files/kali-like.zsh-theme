@@ -35,17 +35,17 @@ THEME_MODE=auto
 # Colors for the prompt (256-color palette indices)
 # Run 'spectrum_ls' in your terminal to see all available colors
 # These are the default (dark) colors; light mode overrides them below
-FGPROMPT_USER=027
+FGPROMPT_USER=27
 FGPROMPT_ROOT=196
-FRAMEPROMPT_USER=073
-FRAMEPROMPT_ROOT=027
+FRAMEPROMPT_USER=73
+FRAMEPROMPT_ROOT=27
 VENVPROMPT_COLOR=white
-VCSPROMPT_COLOR=067
+VCSPROMPT_COLOR=67
 SSHPROMPT_COLOR=yellow
 TMUXPROMPT_COLOR=cyan
-DOCKERPROMPT_COLOR=033
-NIXPROMPT_COLOR=105
-K8SPROMPT_COLOR=069
+DOCKERPROMPT_COLOR=33
+NIXPROMPT_COLOR=cyan
+K8SPROMPT_COLOR=69
 CMDTIME_COLOR=220
 # Show command execution time if it exceeds CMDTIME_THRESHOLD seconds
 SHOW_CMD_DURATION=yes
@@ -142,8 +142,8 @@ configure_prompt() {
         FGPROMPT="$FG[$FGPROMPT_ROOT]"
         FRAMEPROMPT="$FG[$FRAMEPROMPT_ROOT]"
     else
-        FRAMEPROMPT="$FG[$FRAMEPROMPT_USER]"
-        FGPROMPT="$FG[$FGPROMPT_USER]"
+        FGPROMPT="%F{$FGPROMPT_USER}"
+        FRAMEPROMPT="%F{$FRAMEPROMPT_USER}"
     fi
 
     local dashes=${(l:$PROMPT_DASH_COUNT::─:)}
@@ -158,7 +158,8 @@ configure_prompt() {
 
     case "$PROMPT_ALTERNATIVE" in
         twoline)
-            PROMPT=$'$FRAMEPROMPT┌─'$dashes$ssh_indicator$tmux_indicator$docker_indicator$nix_indicator$'$(if [[ -n $VIRTUAL_ENV ]]; then echo "─(%F{$VENVPROMPT_COLOR}$(basename $VIRTUAL_ENV)$FRAMEPROMPT)"; elif [[ -n $CONDA_DEFAULT_ENV ]]; then echo "─(%F{$VENVPROMPT_COLOR}$CONDA_DEFAULT_ENV$FRAMEPROMPT)"; fi)$(if whence -p kubectl &>/dev/null; then local _ctx=$(kubectl config current-context 2>/dev/null); [ -n "$_ctx" ] && echo "─(%F{$K8SPROMPT_COLOR}$_ctx$FRAMEPROMPT)"; fi)\(%B$FGPROMPT%n@%m%b$FRAMEPROMPT)-[%B$([ "$PATHPROMPT_COLOR" = "terminal_default" ] && echo "%F{reset}" || echo "%F{$PATHPROMPT_COLOR}")%(6~.%-1~/…/%4~.%5~)%b$FRAMEPROMPT]${vcs_info_msg_0_}\n$FRAMEPROMPT└─%(?.%B%(#.%F{red}#.$FGPROMPT$).%F{red}✘ %B%(#.%F{red}#.$FGPROMPT$))%b%F{reset} '
+            PROMPT="$FRAMEPROMPT┌─$dashes$ssh_indicator$tmux_indicator$docker_indicator$nix_indicator$(if [[ -n $VIRTUAL_ENV ]]; then echo "─(%F{$VENVPROMPT_COLOR}$(basename $VIRTUAL_ENV)$FRAMEPROMPT)"; elif [[ -n $CONDA_DEFAULT_ENV ]]; then echo "─(%F{$VENVPROMPT_COLOR}$CONDA_DEFAULT_ENV$FRAMEPROMPT)"; fi)$(if whence -p kubectl &>/dev/null; then local _ctx=$(kubectl config current-context 2>/dev/null); [ -n "$_ctx" ] && echo "─(%F{$K8SPROMPT_COLOR}$_ctx$FRAMEPROMPT)"; fi)(%B$FGPROMPT%n@%m%b$FRAMEPROMPT)-[%B$([ "$PATHPROMPT_COLOR" = "terminal_default" ] && echo "%F{reset}" || echo "%F{$PATHPROMPT_COLOR}")%(6~.%-1~/…/%4~.%5~)%b$FRAMEPROMPT]${vcs_info_msg_0_}
+$FRAMEPROMPT└─%B%(#.%F{red}#.$FGPROMPT$)%b%F{reset} "
             RPROMPT='${_cmd_duration_msg}'
             ;;
         oneline)
