@@ -55,7 +55,6 @@
     vbindiff
     vscode
     github-desktop
-    ruby_3_4
     rbenv
 
     # Hardware / diagnostics
