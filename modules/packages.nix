@@ -54,7 +54,9 @@
     zlib
     vbindiff
     vscode
-    github-desktop    
+    github-desktop
+    ruby_3_4
+    rbenv
 
     # Hardware / diagnostics
     acpi
