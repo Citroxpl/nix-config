@@ -56,6 +56,7 @@
     vscode
     github-desktop
     ruby_3_4
+    docker
 
     # Hardware / diagnostics
     acpi
