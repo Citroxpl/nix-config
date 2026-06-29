@@ -50,13 +50,19 @@
     ncurses
     flex
     bison
-    gcc
     zlib
     vbindiff
     vscode
     github-desktop
     ruby_3_4
     docker
+    openssl
+    libyaml
+    libffi
+    readline
+    yarn
+    ruby-lsp
+
 
     # Hardware / diagnostics
     acpi
