@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # apps
+    # system
     xfce4-whiskermenu-plugin
     lxqt.qterminal    
     blueman
@@ -25,6 +25,7 @@
     google-chrome
     netflix
     discord
+    steam
 
     # Dev
     kitty
