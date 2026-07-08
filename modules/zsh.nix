@@ -24,6 +24,7 @@
       rbf = "cd ~/nixos-config && sudo nixos-rebuild switch --flake '.#laptop'";
       i = "ip a";
       jamal = "./bin/kamal";
+      spec = "bundle exec rspec spec";
     };
   };
 }
