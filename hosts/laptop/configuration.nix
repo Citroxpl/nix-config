@@ -82,6 +82,6 @@ in
 
   nixpkgs.config.allowUnfree = true;
   services.openssh.enable = true;
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
