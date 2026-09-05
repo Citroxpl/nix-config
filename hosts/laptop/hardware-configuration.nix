@@ -47,11 +47,11 @@
 
 #data partition
 
-  fileSystems."/data" = 
-    {
-    device = "/dev/nvme1n1p5";
-    fsType = "ntfs";
-    };
+    fileSystems."/data" = 
+      {
+      device = "/dev/disk/by-uuid/E04AE63F4AE611D8";
+      fsType = "ntfs";
+      };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
