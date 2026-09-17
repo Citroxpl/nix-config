@@ -63,6 +63,7 @@
     readline
     yarn
     ruby-lsp
+    os-prober
 
 
     # Hardware / diagnostics
