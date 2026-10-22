@@ -25,6 +25,7 @@
       i = "ip a";
       jamal = "./bin/kamal";
       spec = "bundle exec rspec spec";
+      voyager = "cd /home/kuba/voyager";
     };
   };
 }
