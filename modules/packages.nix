@@ -55,7 +55,7 @@
     vbindiff
     vscode
     github-desktop
-    ruby_3_4
+    ruby_4_0
     docker
     openssl
     libyaml
