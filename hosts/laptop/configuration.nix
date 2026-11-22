@@ -81,6 +81,19 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (final: prev: {
+      ruby_4_0 = prev.ruby_4_0.overrideAttrs (old: {
+        version = "4.0.10";
+
+        src = prev.fetchurl {
+          url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.10.tar.xz";
+          hash = "sha256-FTf3pgA8Q2VG7KtrSLbnclqa8jKPRaivf0L0HF35Crg";
+        };
+      });
+    })
+  ];
+
   services.openssh.enable = true;
   system.stateVersion = "26.05";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
